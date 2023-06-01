@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../index.css";
 import OrderDisplay from "../OrderDisplay";
 import DBSelectOption from "../Components/DBSelectOption"
@@ -8,6 +8,34 @@ import { useState } from "react";
 
 export default function FormOrder() {
     let [driver, setDriver] = useState("");
+    const [placa, setPlaca] = useState([]);
+    const [material, setMaterial] = useState([]);
+    const [vale, setVale] = useState([]);
+    const [conferente, setConferente] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:5000/veiculos/", { method: "GET" })
+            .then((response) => response.json())
+            .then(json => setPlaca(json));
+    },[])
+
+    useEffect(() => {
+        fetch("http://localhost:5000/material/", { method: "GET" })
+            .then((response) => response.json())
+            .then(json => setMaterial(json));
+    },[])
+ 
+    useEffect(() => {
+        fetch("http://localhost:5000/vale/", { method: "GET" })
+            .then((response) => response.json())
+            .then(json => setVale(json));
+    },[])
+ 
+    useEffect(() => {
+        fetch("http://localhost:5000/conferente/", { method: "GET" })
+            .then((response) => response.json())
+            .then(json => setConferente(json));
+    },[])
 
     const handleChange = (event) => {
         event.target.value = event.target.value.toUpperCase();
@@ -32,16 +60,16 @@ export default function FormOrder() {
                 value={driver} onChange={handleChange}
                 />
                 <DBSelectOption className="optionList" id="placa" forname="placa" textlabel="Caminhão"
-                url="http://localhost:5000/veiculos/" required
+                options={placa} optKey="id" optText="description" optValue="area" required
                 />
                 <DBSelectOption className="optionList" id="material" forname="material" textlabel="Material"
-                url="http://localhost:5000/material/" required
+                options={material} optKey="id" optText="description" required
                 />
-                <DBSelectOption className="optionList" id="vale" forname="vale" textlabel="Valor do vale"
-                url="http://localhost:5000/vale/" required
+                <DBSelectOption className="optionList" id="vale" forname="vale" textlabel="Vale"
+                options={vale} optKey="id" optText="description" required
                 />
                 <DBSelectOption className="optionList" id="conferente" forname="conferente" textlabel="Conferente"
-                url="http://localhost:5000/conferente/" required
+                options={conferente} optKey="id" optText="description" required
                 />
                 <button className="buttonApp" 
                 type="submit">Imprimir</button>

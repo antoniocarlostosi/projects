@@ -19,6 +19,7 @@ body {
   padding: var(--padding);
   margin: var(--margen);
   background-color: grey;
+  box-shadow: 5px 5px 10px rgb(173, 173, 173);
   color: aliceblue;
   border: none;
   cursor: pointer;
@@ -28,11 +29,10 @@ body {
   font-weight: 400;
 }
 
-
 .buttonApp:hover {
   background-color: lightblue;
   color: black;
-  box-shadow: 5px 5px 10px gray;
+  box-shadow: 5px 5px 10px rgb(173, 173, 173);
   border: none;
   width: var(--width);
   font-weight: 600;

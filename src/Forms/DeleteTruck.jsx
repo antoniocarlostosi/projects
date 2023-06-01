@@ -1,25 +1,33 @@
 import { Link } from "react-router-dom"
 import "../index.css";
-import DBSelectOption from "../Components/DBSelectOption";
-
+import { useState, useEffect } from "react";
 
 export default function DeleteTruck() {
+    const [plate, setPlate] = useState([]);
 
-    function DeletePlate() {
-        fetch("http://localhost:5000/veiculos/", {method: "DELETE"})
-        .then(alert("Placa excluída!"))         
+    useEffect(() => {
+        ListPlates();
+    },[])
+
+    function ListPlates() {
+        fetch("http://localhost:5000/veiculos/", { method: "GET" })
+            .then((response) => response.json())
+            .then(json => setPlate(json));
+    }
+
+    function DeletePlate(numId) {
+       fetch(`http://localhost:5000/veiculos/${numId}`, {method: "DELETE"})
+        .then(alert("Placa excluída!")).then(ListPlates)        
     }
 
     return(
         <div>
-            <h1>Excluir placas das carretas</h1>
-            <form className="formOrder">
-                <DBSelectOption className="optionList" id="placa" forname="placa" textlabel="Caminhão "
-                ext="Selecione o caminhão"
-                url="http://localhost:5000/veiculos/" required
-                />
-                <button className="buttonApp" onClick={DeletePlate}>Excluir</button>
-            </form>
+            <h1>Exclusão de placas</h1>
+            {plate.map((item) => (
+                <div className="divitem">
+                    <button className="buttonApp" onClick={() => DeletePlate(item.id)}>{item.description}</button>
+                </div>
+            ))}
             <div className="headerOption">
                 <Link className="linkpage" to="/" >Retornar</Link>
             </div>

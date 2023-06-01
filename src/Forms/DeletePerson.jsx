@@ -2,14 +2,14 @@ import { Link } from "react-router-dom"
 import "../index.css";
 import { useState, useEffect } from "react"
 
-export default function NewPerson() {
+export default function DeletePerson() {
     const [person, setPerson] = useState([]);
 
     useEffect(() => {
-        ListarConferentes();
+        ListPersons();
     },[])
 
-    function ListarConferentes() {
+    function ListPersons() {
         fetch("http://localhost:5000/conferente/", { method: "GET" })
             .then((response) => response.json())
             .then(json => setPerson(json));
@@ -17,7 +17,7 @@ export default function NewPerson() {
 
     function DeleteConf(numId) {
        fetch(`http://localhost:5000/conferente/${numId}`, {method: "DELETE"})
-        .then(alert("Placa excluída!")).then(ListarConferentes)        
+        .then(alert("Conferente excluído!")).then(ListPersons)        
     }
 
     return(
