@@ -1,0 +1,82 @@
+{
+    "veículos": [
+        {   "id": 1,
+            "placa": "DTB-0380",
+            "area": 20
+        },
+        {
+            "id": 2,
+            "placa": "KVV-3B64",
+            "area": 8.8
+        },
+        {
+            "id": 3,
+            "placa": "EVO-2A90",
+            "area": 20
+        },
+        {
+            "id": 4,
+            "placa": "ERX-9091",
+            "area": 19.9
+        },
+        {
+            "id": 5,
+            "placa": "DYF-5480",
+            "area": 7.3
+        },
+        {
+            "id": 6,
+            "placa": "FUY-7I59",
+            "area": 19.9
+        } ],
+
+    "material": [
+        {
+            "id": 1,
+            "tipo": "Areia média"
+        },
+        {
+            "id": 2,
+            "tipo": "Areia fina"
+        },
+        {
+            "id": 3,
+            "tipo": "Areia grossa"
+        },
+        {
+            "id": 4,
+            "tipo": "Pedra"
+        },
+        {
+            "id": 5,
+            "tipo": "Pedrisco"
+        }],
+    "conferente": [
+        {
+            "id": 1,
+            "nome": "Leandro"
+        },
+        {
+            "id": 2,
+            "nome": "Macedo"
+        },
+        {
+            "id": 3,
+            "nome": "Léssio"
+        }],
+    "vale": [
+        {
+            "id": 1,
+            "valor": "R$ 100,00"
+        },
+        {
+            "id": 2,
+            "valor": "R$ 150,00"
+        },
+        {
+            "id": 3,
+            "valor": "R$ 200,00"
+        }
+    ]        
+}
+
