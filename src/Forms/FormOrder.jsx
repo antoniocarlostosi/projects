@@ -41,7 +41,7 @@ export default function FormOrder() {
         event.target.value = event.target.value.toUpperCase();
         setDriver(event.target.value)
     }
-    
+
     return(
         <div>
             <h1>Requisição de materiais a granel</h1>
